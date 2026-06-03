@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gara's Duelist Home Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="field">
+        <div class="field-zones">
+            <!--Monster Zones-->
+            <div class="monster-zone" id="monster-zone-1"></div>
+            <div class="monster-zone" id="monster-zone-2"></div>
+            <div class="monster-zone" id="monster-zone-3"></div>
+            <div class="monster-zone" id="monster-zone-4"></div>
+            <div class="monster-zone" id="monster-zone-5"></div>
+
+            <!--Spell & Trap Zones-->
+            <div class="spell-trap-zone" id="opponent-spell-trap-zone-1"></div>
+            <div class="spell-trap-zone" id="opponent-spell-trap-zone-2"></div>
+            <div class="spell-trap-zone" id="opponent-spell-trap-zone-3"></div>
+            <div class="spell-trap-zone" id="opponent-spell-trap-zone-4"></div>
+            <div class="spell-trap-zone" id="opponent-spell-trap-zone-5"></div>
+
+
+        </div>
+        
+        <div id="hologram-display" class="hologram-hidden">
+            <div class="hologram-content">
+
+            <div class="loading-bar-container">
+                <div class="loading-bar-fill"></div>
+            </div>
+
+            <div class="hologram-scroll-area">
+                <div class="scroll-card">
+
+                </div>
+
+                <div class="scroll-card">
+                    
+                </div>
+
+                <div class="scroll-card">
+                    
+                </div>
+
+            </div>
+
+            </div>
+            <button id="return-button">End Turn</button>
+        </div>
+
+
+        <nav class="hand">
+            <div class="card" id="about-card">
+                <div class="card-inner">
+                    <div class="card-back"></div>
+                    <a class="card-front"> 
+                        <div class="ygo-header">
+                            <h2 class="card-title">About</h2>
+                            <div class="card-attribute light-attr"></div> </div>
+                        
+                            <div class="ygo-level-row">⭐⭐⭐⭐⭐⭐</div>
+                        <div class="ygo-art-box">
+                        </div>
+            
+                        <div class="ygo-description-box">
+                            <p class="ygo-type">[ Cyberse / Normal ]</p>
+                            <p class="ygo-effect">A highly motivated developer tracking. Will often tries his best to get things done. Often works well when given clear goals. </p>
+                            <span class="ygo-stats">ATK/2500 DEF/2000</span>
+                        </div>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!--This is the Projects card for the Projects Section-->
+            <div class="card" id="projects-card">
+                <div class="card-inner">
+                    <div class="card-back"></div>
+                    <a class="card-front"> 
+                        <div class="ygo-header">
+                            <h2 class="card-title">Projects</h2>
+                            <div class="card-attribute spell-attr"></div> 
+                            </div>
+                        <div class="ygo-level-row"></div>
+                        <div class="ygo-art-box"> 
+                        </div>
+                        <div class="ygo-description-box">
+                            <p class="ygo-type">[ Spell Card ]</p>
+                            <p class="ygo-effect">Select 1 target repository from the Github Profile. Activate it, then destroy 1 card your opponent controls. </p>
+                        </div>
+                        
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <!--This is the Socials card for the Socials Section-->
+            <div class="card" id="socials-card">
+                    <div class="card-inner">
+                    <div class="card-back"></div>
+                    <a class="card-front">  
+                        <div class="ygo-header">
+                            <h2 class="card-title">Socials</h2>
+                            <div class="card-attribute dark-attr"></div> 
+                            </div>
+                        <div class="ygo-level-row">⭐⭐⭐⭐</div>
+                        <div class="ygo-art-box"> 
+                        </div>
+                        <div class="ygo-description-box">
+                            <p class="ygo-type">[ Machine / Effect ]</p>
+                            <p class="ygo-effect">When this card is summoned: You can special summon any number of cards that includes this monster's name, then immediately after, fusion summon one "Developer" monster. </p>
+                            <span class="ygo-stats">ATK/1900 DEF/0</span>
+                        </div>
+                        
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--This is the Contact card for the Contact Section-->
+            <div class="card" id="contact-card">
+                <div class="card-inner">
+                    <div class="card-back"></div>
+                    <a class="card-front">  
+                        <div class="ygo-header">
+                            <h2 class="card-title">Contact</h2>
+                            <div class="card-attribute trap-attr"></div> 
+                            </div>
+                        <div class="ygo-level-row"></div>
+                        <div class="ygo-art-box"> 
+                        </div>
+                        <div class="ygo-description-box">
+                            <p class="ygo-type">[ Trap Card ]</p>
+                            <p class="ygo-effect">You can activate this card from your hand without setting it. Special summon 1 "Developer" fusion monster from your extra deck, by sending cards from your hand or field to the GY. </p>
+                        </div>
+                        
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+    </main> 
+    <script src="script.js"></script>
+</body>
+</html>

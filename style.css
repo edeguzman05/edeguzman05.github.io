@@ -1,0 +1,616 @@
+@import url('https://googleapis.com/css2?family=Orbitron&display=swap');
+
+body {
+    overflow: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.hand {
+    display: flex;
+    justify-content: center; /* This centers the remaining cards */
+    align-items: flex-end;
+    gap: 10px;               /* Ensure this is a positive number, not negative */
+    height: 400px;
+    width: 100%;             /* Allow it to fill the width */
+    transition: all 0.5s ease; /* Smoothly adjust when a card leaves */
+}
+
+.field {
+    width: 100vw;
+    height: 100vh;
+    background-color: #06030C;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+
+    perspective: 1200px;
+}
+
+.card {
+    width: 150px;
+    height: 220px;
+    border: 2px solid black;
+    border-radius: 2px;
+    position: relative;
+
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+
+    transform-style: preserve-3d;
+    transform-origin: bottom center;
+
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-50px) rotate(0deg) scale(1.15) !important;
+    z-index: 100 !important;
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.7);
+}
+
+.card:hover .card-inner{
+    transform: rotateY(180deg);
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    transform-origin: center bottom;
+    transform: rotateY(0deg);
+}
+
+
+
+.card-front {
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    box-sizing: border-box;
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotateY(180deg); /* Starts rotated away so it's hidden by default */
+    text-decoration: none;
+    transform: rotateY(180deg);
+}
+
+.ygo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(0,0,0,0.5);
+    padding: 2px 4px;
+    margin-bottom: 4px;
+    text-decoration: none;
+}
+
+.card-title {
+    font-size: 0.8rem; /* Scaled down to fit the 150px width */
+    margin: 0;
+    text-align: left;
+}
+
+.card-attribute {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    box-sizing: border-box;
+
+    border: 1.5px solid #4a3c2B;
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+
+    flex-shrink: 0;
+    margin-left: 6px;
+    text-decoration: none;
+}
+
+.ygo-art-box {
+    flex-grow: 1;
+    border: 1px solid #555;
+    background-color: #dcdcdc;
+    margin-bottom: 2px;
+
+    background-size: cover;       /* Stretches/scales image to fill the box cleanly */
+    background-position: center;   /* Keeps the focus centered */
+    background-repeat: no-repeat;  /* Prevents tiling patterns */
+}
+
+.ygo-level-row {
+    height: 14px; /* Exactly 12-14px high */
+    display: flex;
+    justify-content: flex-end; /* Monsters right-align their levels */
+    align-items: center;
+    padding: 0 6px;
+    margin-bottom: 3px;
+    font-size: 0.55rem; /* Perfect size for star emojis or symbols */
+}
+
+.ygo-description-box {
+    height: auto; /* Fixed height for the text area */
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 2px 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.ygo-type {
+    font-weight: bold;
+    font-size: 0.52rem;
+    margin-bottom: 1px;
+    text-decoration: none;
+}
+
+.ygo-effect {
+    font-size: 0.44rem;
+    line-height: 1.1;
+    text-decoration: none;
+    word-break: break-word;
+}
+
+.ygo-stats{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.52rem;
+    font-weight: 700;
+    color: #000000;
+    letter-spacing: 0px;
+    display: block;
+    text-align: right;
+    margin-top: auto;
+    width: 100%;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.6); 
+    padding-top: 2px;
+}
+
+.card-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    position: absolute;
+    background-image: url('src/Backside.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    transform: rotateY(0deg);
+}
+
+/* Painting the colors directly to the front face */
+#about-card .card-front {
+    background-color: #FFF677;
+    font-size: 1.3rem;
+}
+
+#projects-card .card-front {
+    background-color: #1D948B;
+    font-size: 1.3rem;
+}
+
+#contact-card .card-front {
+    background-color: #B33D8A;
+    font-size: 1.3rem;
+}
+
+#socials-card .card-front {
+    background-color: #FF9E53;
+    font-size: 1.3rem;
+}
+
+.life-points {
+    color: white;
+}
+
+.label {
+    color: white;
+    font-size: 2.5rem;
+}
+
+.counter {
+    color: red;
+    font-size: 2.5rem;
+}
+
+.card-front h2{
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    text-transform : uppercase;
+    letter-spacing: -0.5px;
+    font-size: 1.3rem;
+
+/* 1. Lighten the font weight */
+    font-weight: 500; 
+
+    /* 2. Soften the outline from harsh black to a translucent dark gray */
+    text-shadow: 
+    -0.5px -0.5px 0 rgba(0, 0, 0, 0.6),  
+     0.5px -0.5px 0 rgba(0, 0, 0, 0.6),
+    -0.5px  0.5px 0 rgba(0, 0, 0, 0.6),
+     0.5px  0.5px 0 rgba(0, 0, 0, 0.6), 
+     1px  1px 3px rgba(0, 0, 0, 0.4); /* Subtle drop depth shadow */
+}
+
+#about-card {
+    transform: rotate(-5deg) translateY(6px);
+    z-index: 1;
+    order: 1;
+}
+#projects-card {
+    transform: rotate(-2deg) translateY(-6px);
+    z-index: 2;
+    order: 2;
+}
+
+#socials-card {
+    transform: rotate(2deg) translateY(-6px);
+    z-index: 3;
+    order: 3;
+}
+#contact-card {
+    transform: rotate(5deg) translateY(6px);
+    z-index: 4;
+    order: 4;
+}
+
+/* About Card: Authentic LIGHT Attribute (Gold/White radiant glow) */
+.light-attr {
+    background: radial-gradient(circle at 35% 35%, #ffffff 0%, #fff677 40%, #d4af37 100%);
+}
+
+/* Projects Card: Authentic SPELL Attribute (Classic teal/emerald radiant glow) */
+.spell-attr {
+    background: radial-gradient(circle at 35% 35%, #e0fcf4 0%, #1d948b 50%, #0a4d48 100%);
+}
+
+/* Socials Card: Authentic DARK Attribute (Deep purple/void radiant glow) */
+.dark-attr {
+    background: radial-gradient(circle at 35% 35%, #f1e4ff 0%, #8a4fff 50%, #3a1663 100%);
+}
+
+/* Contact Card: Authentic TRAP Attribute (Vibrant magenta/burgundy radiant glow) */
+.trap-attr {
+    background: radial-gradient(circle at 35% 35%, #ffe6f2 0%, #ff3b93 50%, #800e41 100%);
+}
+
+/* Strip default hyperlink behavior from the card faces */
+a.card-front {
+    text-decoration: none; /* Removes the annoying underline */
+    color: inherit;        /* Prevents the text from turning blue */
+}
+
+/* Optional: Ensures the mouse pointer looks right on hover */
+a.card-front:link, 
+a.card-front:visited, 
+a.card-front:hover, 
+a.card-front:active {
+    color: initial; /* Keeps your specific text colors intact */
+    text-decoration: none;
+}
+
+#about-card .ygo-art-box {
+    background-image: url('personalSRC/me.jpg');
+}
+
+#projects-card .ygo-art-box {
+    background-image: url('src/projects.png');
+}
+
+
+#socials-card .ygo-art-box {
+    background-image: url('src/socials.gif');
+}
+
+#contact-card .ygo-art-box {
+    background-image: url('src/Contacts.gif');
+}
+
+/* Update your existing field-zones container */
+.field-zones {
+    display: grid;
+    grid-template-columns: repeat(5, 130px);
+    grid-template-rows: repeat(2, 180px);
+    gap: 15px;
+    /* This allows the 3D transforms of the cards to be seen relative to the board */
+    transform-style: preserve-3d;
+    perspective: 1200px;
+    margin: auto;
+    
+
+    transform-origin: bottom center;
+    
+    transform: rotateX(65deg) translateY(20px) scale(1.15);
+    transform-style: preserve-3d;
+    
+    /* Keep your existing holographic mat styling */
+    padding: 30px;
+    background: radial-gradient(circle at center, rgba(29, 148, 139, 0.15) 0%, transparent 70%);
+    border: 1px solid rgba(29, 148, 139, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 
+                0 0 40px rgba(29, 148, 139, 0.1);
+}
+
+/* NEW: The shared plane for all zones */
+.duel-board {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between the Monster and Spell/Trap rows */
+    
+    /* THE MECHANIC: By rotating the parent, all child zones skew uniformly */
+    transform: rotateX(55deg); 
+    transform-style: preserve-3d;
+}
+
+.zone-row {
+    display: flex;
+    justify-content: center;
+    gap: 4px; /* The tight gap between adjacent zones seen in image_93d8ab.png */
+}
+
+
+.monster-zone, 
+.spell-trap-zone  {
+    width: 100%;
+    height: 100%;
+    
+    /* The Wireframe Look */
+    border: 2px solid rgba(29, 148, 139, 0.6); 
+    box-shadow: 
+        0 0 10px rgba(29, 148, 139, 0.4),       
+        inset 0 0 15px rgba(29, 148, 139, 0.2); 
+        
+    background: rgba(6, 3, 12, 0.6); 
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Optional: Make the zone glow brighter when you hover over it */
+.monster-zone:hover, 
+.spell-trap-zone:hover {
+    background: rgba(29, 148, 139, 0.2);
+    box-shadow: 
+        0 0 20px rgba(29, 148, 139, 0.8),
+        inset 0 0 20px rgba(29, 148, 139, 0.5);
+    cursor: pointer;
+}
+#hologram-display {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 50%;
+    background: rgba(6, 3, 12, 0.95);
+    border: 2px solid #1D948B;
+    box-shadow: 0 0 30px rgba(29, 148, 139, 0.6);
+    color: white;
+    z-index: 1000;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    font-family: 'Orbitron', sans-serif;
+    
+    /* Animation settings */
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.hologram-hidden {
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+#return-card-btn {
+    margin-top: auto;
+    padding: 10px;
+    background: #FF3B93; /* Trap-attr magenta */
+    color: white;
+    border: none;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* 3. The Math-Powered Summoned Class */
+.card.summoned {
+    /* Flies the card across the X and Y coordinates calculated by JS */
+    transform: translate(var(--move-x), var(--move-y)) rotateY(180deg) scale(1) !important;
+    z-index: 500 !important;
+    pointer-events: none; /* Prevents clicking while summoned */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.loading-bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    margin-top: auto; /* Pushes it nicely above the button */
+    margin-bottom: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.loading-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: #1D948B; /* Matches your spell card teal glow */
+    box-shadow: 0 0 12px #1D948B;
+}
+
+/* When the hologram element loses the 'hologram-hidden' class, charge the bar to 100%! */
+#hologram-display:not(.hologram-hidden) .loading-bar-fill {
+    animation: loadProgress 2s forwards ease-in-out;
+}
+
+@keyframes loadProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* The default, hidden state */
+.scroll-card {
+    opacity: 0;
+    transform: translateY(30px); /* Pushes it down slightly */
+    transition: all 0.6s ease-out; /* Controls the speed of the reveal */
+    margin-bottom: 40px; 
+}
+
+/* The revealed state */
+.scroll-card.active {
+    opacity: 1;
+    transform: translateY(0); /* Snaps it back into its true position */
+}
+
+.hologram-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 15px;
+}
+
+.hologram-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.hologram-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 3px;
+}
+
+.hologram-content::-webkit-scrollbar-thumb {
+    background: #1D948B;
+    border-radius: 4px;
+}
+
+.scroll-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #1D948B; 
+    border-right: 1px solid rgba(29, 148, 139, 0.3);
+    padding: 20px;
+    margin-bottom: 25px;
+
+    /* THE MAGIC: Cuts off the top-right and bottom-left corners at a 15px angle */
+    clip-path: polygon(
+        0 0, 
+        calc(100% - 15px) 0, 
+        100% 15px, 
+        100% 100%, 
+        15px 100%, 
+        0 calc(100% - 15px)
+    );
+
+    display: flow-root;
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+
+    background-image: linear-gradient(
+        rgba(29, 148, 139, 0.08) 50%, 
+        transparent 50%
+    );
+    background-size: 100% 4px;
+}
+
+/* The Revealed State (Triggered by JavaScript) */
+.scroll-card.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Social Links Formatting */
+.social-link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s ease;
+}
+.social-link:hover {
+    background: rgba(29, 148, 139, 0.15); /* Lights up when hovered */
+}
+
+.hologram-image {
+    max-width: 200px; /* Keeps the image compact enough for text to fit next to it */
+    height: auto;
+    
+    border: 1px solid rgba(29, 148, 139, 0.4); 
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(29, 148, 139, 0.2); 
+    
+    float: right; /* Pushes the image to the right edge of the scroll card */
+    margin: 5px 0 15px 15px; /* Adds breathing room: top, right, bottom, left. Crucial so text doesn't touch the border */
+}
+
+.scroll-card p {
+    margin-bottom: 12px; /* Adds empty space below every paragraph */
+    line-height: 1.5; /* Increases the vertical space between lines of text */
+    font-size: 0.95rem; /* Optional: tweaks the text size slightly for readability */
+}
+
+.scroll-card p:last-child {
+    margin-bottom: 0;
+}
+
+.scroll-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    background: rgba(29, 148, 139, 0.25); /* Translucent teal backing block */
+    padding: 6px 12px;
+    font-size: 1.1rem;
+    text-transform: uppercase;            /* Forces everything to capitalized data strings */
+    letter-spacing: 2px;                  /* Distributes font tracking for a computerized look */
+    border-left: 4px solid #1D948B;
+    display: inline-block;                /* Restricts the background strip only to the text length */
+    margin-bottom: 15px;
+}
+
+/* 1. The Container: Handles the Centering */
+.monster-zone {
+    /* width and height removed so it inherits the 100% from earlier */
+    position: relative;
+    display: flex;            
+    justify-content: center;  
+    align-items: center;      
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+/* 2. The Card: Only styles applied when it is in the zone */
+.monster-zone .card.summoned {
+    position: relative;        /* Crucial: Must be relative, not absolute! */
+    margin: 0;                 /* Reset margins */
+    top: auto;                 /* Clear absolute offsets */
+    left: auto;                /* Clear absolute offsets */
+    box-shadow: 0 0 15px rgba(29, 148, 139, 0.6); /* Keep your glow */
+    transform: none;           /* Ensure no lingering hand-rotations */
+}
+
+/* Override hand styles when summoned */
+.card.summoned {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    margin: 0 !important; /* Remove any flex-margins from the hand */
+    transform: none;      /* Reset potential hover transforms */
+    z-index: 10;
+}
+.card.flipped .card-inner {
+    transform: rotateY(180deg) !important;
+}
+
+/* Ensure the card keeps its dimensions when moved */
+.monster-zone .card {
+    transition: transform 0.3s ease-out;
+}
