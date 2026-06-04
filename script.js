@@ -26,14 +26,18 @@ const pageData = {
                     <p> I am currently pursuing a degree in Computer Science at California State University, Fullerton, and have plan on getting a master's degree in the future. Though I plan to work in the field as well, possibly pursuing a career in software development </p>
                     <img class="hologram-image" src="personalSRC/selfie.jpg">
                     <p> I enjoy problem solving and logical thinking, with a passion for creating an elegant yet effective solution to problems in today's world. </p>
-                    <p> I have some interest in machine learning and databases management. I also really love learning and developing new algorithms.</p>
+                    <p> I have interest in machine learning, databases management, algorithms, data structure implementation, and software development.</p>
 
                 </div>
                 <div class="scroll-card">
                     <h3> Skills and Experience </h3>
                         <p> Languages Known: JavaScript, Python, Java, C++, HTML, CSS, SQL </p>
                         <p> Tools: Git, Visual Studio Code </p>
+                        <p> Skills: Problem Solving, Logical Thinking, Teamwork, Communication, Patience, Adaptability </p>
+
+                        <p> I have experience using various tools not related to programming, such as Adobe Photoshop, Illustrator, Premiere Pro and some minimal experience with After Effects.</p>
                         <p> Outside of CS, I work as a Special Education Instructional Aide at Arcadia Unified School District, where I assist students with special needs in their academic and social development. This role has enhanced my communication skills, patience, and ability to adapt to different learning styles. </p>
+
                         <p> I have also worked as a tutor at my high school as well, where I provided academic support to students in various subjects, including math for summer school. </p>
                         <p> I have also worked on different projects, often trying to do solo projects, such as  discord bot, building a personal website, and creating simple games.</p>
                         <img class="hologram-image" src="src/cpp.png">
@@ -41,15 +45,17 @@ const pageData = {
                         <p> I plan on working more on these projects and building more in the future, as well as collaborating with others to create more complex and innovative projects. </p>
 
                 </div>
+                
                 <div class="scroll-card">
                     <h3> Hobbies and Interests </h3>
                         <p> Outside of programming, I enjoy gaming, playing Yu-Gi-Oh and hanging out with friends. I have a passion for learning new things and exploring new technologies. </p>
                         <p> I also have an interest in studying malware for analysis and learning the intricacies of malicious software. </p>
                         <p> I was part of a tennis and volleyball team in High School for 2 years each and occasionally enjoy playing the 2 </p>
+                        <p> These sports have helped me develop teamwork skills, as strong sense of competition to become better and develop my work ethic. </p>
                         <img class="hologram-image" src="personalSRC/tennis.jpg">
                         <p> I have a passion for music as well, listening to a variety of genres such as rap, hip-hop, kpop, metal, rock and much more. I love listening to music while working on playing video games or even building a deck in Yu-Gi-Oh </p>
                         <p> I really enjoy Round 1, the arcade, and I love trying out new sports as well and working out.</p>
-                </div>
+                        <p> I really love editing and producing videos.
             </div>
         `
     },
@@ -97,7 +103,11 @@ const pageData = {
         `
     },
     'projects-card': { loading: '<h2>System</h2><p>Initializing...</p>', actual: '<p>Projects coming soon...</p>' },
-    'contact-card': { loading: '<h2>System</h2><p>Initializing...</p>', actual: '<p>Contact coming soon...</p>' }
+    
+    'contact-card': { loading: `<h2>System</h2><p>Initializing...</p>`, 
+                      actual: `<p> Email: edeguzmanjr05@gmail.com </p>
+        `
+    }
 };
 
 document.addEventListener('click', (e) => {
