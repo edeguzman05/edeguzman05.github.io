@@ -614,3 +614,59 @@ a.card-front:active {
 .monster-zone .card {
     transition: transform 0.3s ease-out;
 }
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+    /* 1. Shrink the cards to fit 5 across a phone screen */
+    .card {
+        width: 70px;
+        height: 103px;
+        border-width: 1px; 
+    }
+
+    /* 2. Shrink the field zones to match the new card size */
+    .monster-zone, .spell-trap-zone {
+        width: 70px;
+        height: 103px;
+    }
+
+    /* 3. Adjust the hand container */
+    .hand {
+        gap: -15px; /* Overlap the cards slightly so they fit cleanly */
+        height: auto; 
+        padding-bottom: 20px;
+    }
+
+    /* 4. Adjust the spacing of the zones */
+    .field-zones {
+        gap: 2px; /* Tighter spacing between zones */
+        padding: 10px 5px;
+    }
+
+    /* 5. Scale down the text inside the physical cards */
+    .card-title {
+        font-size: 6px; /* Keep it tiny but proportional */
+        margin-top: 2px;
+    }
+    
+    .ygo-description-box {
+        padding: 2px;
+    }
+
+    .ygo-type, .ygo-effect, .ygo-stats {
+        font-size: 4px;
+        line-height: 1.1;
+    }
+
+    /* 6. Ensure the Hologram scales nicely for mobile reading */
+    .hologram-content {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    .scroll-card {
+        font-size: 14px; /* Slightly smaller text for mobile reading */
+    }
+}
