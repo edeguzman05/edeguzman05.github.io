@@ -87,7 +87,7 @@ const pageData = {
                     <a href="https://www.linkedin.com/in/emmanuel-de-guzman-45888b3a0/" target="_blank" class="social-link">
                     <img class="hologram-image" src="personalSRC/LinkedIn.png">
                         <h3>[ LinkedIn ]</h3>
-                        <p>Connect with me!.</p>
+                        <p>Connect with me!</p>
                     </a>
 
                 </div>
